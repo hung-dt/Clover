@@ -1,9 +1,13 @@
-#include "Test.h"
+#include "Clover.h"
 
-int main( int argc, char const* argv[] )
+class Sandbox : public clover::Application
 {
+public:
+  Sandbox() = default;
+  ~Sandbox() = default;
+};
 
-  Clover::print();
-
-  return 0;
+clover::Application* clover::createApplication()
+{
+  return new Sandbox();
 }

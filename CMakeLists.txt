@@ -66,7 +66,7 @@ find_package(docopt COMPONENTS CXX REQUIRED)
 
 # src
 
-set(CLOVER_INC ${CMAKE_SOURCE_DIR}/Clover/src)
+set(CLOVER_INC ${CMAKE_SOURCE_DIR}/Clover/include)
 
 add_subdirectory(Clover)
 add_subdirectory(Sandbox)
