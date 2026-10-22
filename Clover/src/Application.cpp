@@ -1,10 +1,8 @@
-#include "Application.h"
+#include "Application.hpp"
 
 namespace clover {
 
-Application::Application() {}
-
-Application::~Application() {}
+/*--------------------------------------------------------------------------*/
 
 void Application::run()
 {
@@ -12,4 +10,4 @@ void Application::run()
     ;
 }
 
-}
+}  // namespace clover

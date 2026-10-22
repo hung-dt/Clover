@@ -1,0 +1,13 @@
+#pragma once
+
+/*--------------------------------------------------------------------------*/
+
+// public API of Clover engine
+
+#include "Core.hpp"
+#include "Application.hpp"
+#include "Log.hpp"
+
+//------------ Entry Point --------------
+
+#include "EntryPoint.hpp"

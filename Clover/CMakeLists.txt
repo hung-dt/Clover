@@ -1,8 +1,4 @@
-add_library(clover
-    include/Clover.h
-    include/Core.h
-    include/Application.h
-    include/Log.h
+add_library(clover SHARED
     src/Core.cpp
     src/Application.cpp
     src/Log.cpp

@@ -1,11 +1,11 @@
-#include "Clover.h"
+#include "Clover.hpp"
+
+/*--------------------------------------------------------------------------*/
 
 class Sandbox : public clover::Application
-{
-public:
-  Sandbox() = default;
-  ~Sandbox() = default;
-};
+{};
+
+/*--------------------------------------------------------------------------*/
 
 clover::Application* clover::createApplication()
 {
