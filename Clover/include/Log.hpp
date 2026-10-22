@@ -1,8 +1,10 @@
 #pragma once
 
-#include <memory>
+#include "Core.hpp"
 
 #include "spdlog/spdlog.h"
+
+#include <memory>
 
 /*--------------------------------------------------------------------------*/
 
@@ -10,7 +12,7 @@ namespace clover {
 
 /*--------------------------------------------------------------------------*/
 
-class Log
+class CLV_API Log
 {
 public:
   static void init();

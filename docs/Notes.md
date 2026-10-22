@@ -30,3 +30,11 @@
 - File I/O, VFS
 
 ## Project Setup
+
+## Event System
+
+- Application creates Windows, so the Application will set up a kind of messaging system
+- The window should not have idea about Application
+- When event occurs inside the actual window:
+  - the window class will receive an event callback
+  - the window will construct an event and then somehow propagate back to the application
