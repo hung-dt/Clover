@@ -1,0 +1,227 @@
+{
+    "version": 6,
+    "configurePresets": [
+        {
+            "name": "config-base",
+            "hidden": true,
+            "displayName": "Base Config",
+            "description": "Base configuration using Ninja generator",
+            "generator": "Ninja",
+            "binaryDir": "${sourceDir}/build/${presetName}",
+            "installDir": "${sourceDir}/install/${presetName}",
+            "architecture": {
+                "value": "x64",
+                "strategy": "external"
+            },
+            "cacheVariables": {
+                "CMAKE_CXX_STANDARD": "23",
+                "CMAKE_CXX_STANDARD_REQUIRED": "ON",
+                "CMAKE_CXX_EXTENSIONS": "OFF",
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -Wpedantic -Wconversion -Wnon-virtual-dtor",
+                "CMAKE_LIBRARY_OUTPUT_DIRECTORY": "${sourceDir}/lib/${presetName}",
+                "CMAKE_RUNTIME_OUTPUT_DIRECTORY": "${sourceDir}/bin/${presetName}",
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "BUILD_TESTS": "OFF",
+                "BUILD_EXAMPLES": "OFF",
+                "CMAKE_VERBOSE_MAKEFILE": "OFF"
+            }
+        },
+        {
+            "name": "debug",
+            "description": "Debug build configuration",
+            "hidden": true,
+            "inherits": "config-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "description": "Release build configuration",
+            "hidden": true,
+            "inherits": "config-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release",
+                "CMAKE_INTERPROCEDURAL_OPTIMIZATION_RELEASE": "ON",
+                "CMAKE_COMPILE_WARNING_AS_ERROR": "OFF"
+            }
+        },
+        {
+            "name": "release-dev",
+            "description": "Release with debug build configuration",
+            "hidden": true,
+            "inherits": "config-base",
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "windows",
+            "description": "Windows build",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Windows"
+            }
+        },
+        {
+            "name": "linux",
+            "description": "Linux build",
+            "hidden": true,
+            "condition": {
+                "type": "equals",
+                "lhs": "${hostSystemName}",
+                "rhs": "Linux"
+            },
+            "cacheVariables": {
+                "CMAKE_TLS_VERIFY": "OFF",
+                "CPM_SOURCE_CACHE": "$env{HOME}/.CPM_Cache"
+            }
+        },
+        {
+            "name": "mingw",
+            "description": "Windows build (MinGW)",
+            "hidden": true,
+            "inherits": "windows",
+            "cacheVariables": {
+                "CMAKE_TLS_VERIFY": "OFF",
+                "CPM_SOURCE_CACHE": "E:/Dev/Workspace/cpp/CPM_Cache"
+            }
+        },
+        {
+            "name": "gcc",
+            "description": "Build with gcc in Linux or MinGW in Windows",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_CXX_FLAGS": "-fdiagnostics-color=always"
+            }
+        },
+        {
+            "name": "clang",
+            "description": "Build with clang in Linux or MingGW in Windows",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_CXX_FLAGS": "-fcolor-diagnostics"
+            }
+        },
+        {
+            "name": "cl",
+            "description": "Windows build with msvc cl",
+            "hidden": true,
+            "inherits": "windows",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "cl",
+                "CMAKE_CXX_COMPILER": "cl",
+                "CMAKE_CXX_FLAGS": "/W4"
+            }
+        },
+        {
+            "name": "clang-cl",
+            "description": "Windows build with msvc clang-cl",
+            "hidden": true,
+            "inherits": "windows",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang-cl",
+                "CMAKE_CXX_COMPILER": "clang-cl"
+            },
+            "vendor": {
+                "microsoft.com/VisualStudioSettings/CMake/1.0": {
+                    "intelliSenseMode": "windows-clang-x64"
+                }
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "Debug build with gcc",
+            "inherits": [
+                "linux",
+                "debug",
+                "gcc"
+            ]
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "Release build with gcc",
+            "inherits": [
+                "linux",
+                "release",
+                "gcc"
+            ]
+        },
+        {
+            "name": "gcc-debug-mingw",
+            "displayName": "Debug build with gcc (MinGW)",
+            "inherits": [
+                "mingw",
+                "debug",
+                "gcc"
+            ]
+        },
+        {
+            "name": "gcc-release-mingw",
+            "displayName": "Release build with gcc (MinGW)",
+            "inherits": [
+                "mingw",
+                "release",
+                "gcc"
+            ]
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Debug build with clang (MinGW)",
+            "inherits": [
+                "mingw",
+                "debug",
+                "clang"
+            ]
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Release build with clang (MinGW)",
+            "inherits": [
+                "mingw",
+                "release",
+                "clang"
+            ]
+        },
+        {
+            "name": "cl-debug",
+            "displayName": "Windows debug build with MSVC cl",
+            "inherits": [
+                "debug",
+                "cl"
+            ]
+        },
+        {
+            "name": "cl-release",
+            "displayName": "Windows release build with MSVC cl",
+            "inherits": [
+                "release",
+                "cl"
+            ]
+        },
+        {
+            "name": "clang-cl-debug",
+            "displayName": "Windows debug build with clang-cl",
+            "inherits": [
+                "debug",
+                "clang-cl"
+            ]
+        },
+        {
+            "name": "clang-cl-release",
+            "displayName": "Windows release build with clang-cl",
+            "inherits": [
+                "release",
+                "clang-cl"
+            ]
+        }
+    ],
+    "buildPresets": [],
+    "testPresets": []
+}
