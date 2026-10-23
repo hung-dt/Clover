@@ -59,7 +59,7 @@ enum EventCategory
   }                                 \
   const char* name() const override \
   {                                 \
-    return #etype;                  \
+    return #etype "Event";          \
   }
 
 #define EVENT_CLASS_CATEGORY(cat)    \

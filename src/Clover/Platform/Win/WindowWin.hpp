@@ -29,7 +29,7 @@ public:
   unsigned height() const override { return data_.props.height; }
 
   // Window attributes
-  void eventCallback(const EventCallbackFn& callback) override
+  void setEventCallback(const EventCallbackFn& callback) override
   {
     data_.eventCallback = callback;
   }

@@ -13,7 +13,7 @@ namespace clover {
 
 /*--------------------------------------------------------------------------*/
 
-class CLV_API MouseButtonEvent : public Event
+class CLV_API KeyEvent : public Event
 {
 public:
   inline int getMouseButton() const { return button_; }
@@ -21,7 +21,7 @@ public:
   EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 protected:
-  MouseButtonEvent(int keyCode)
+  KeyEvent(int keyCode)
     : button_(keyCode)
   {
   }
@@ -31,11 +31,11 @@ protected:
 
 /*--------------------------------------------------------------------------*/
 
-class CLV_API KeyPressedEvent : public MouseButtonEvent
+class CLV_API KeyPressedEvent : public KeyEvent
 {
 public:
   KeyPressedEvent(int keyCode, int repeatCount)
-    : MouseButtonEvent(keyCode)
+    : KeyEvent(keyCode)
     , repeatCount_(repeatCount)
   {
   }
@@ -56,11 +56,11 @@ private:
 
 /*--------------------------------------------------------------------------*/
 
-class CLV_API KeyReleasedEvent : public MouseButtonEvent
+class CLV_API KeyReleasedEvent : public KeyEvent
 {
 public:
   KeyReleasedEvent(int keyCode)
-    : MouseButtonEvent(keyCode)
+    : KeyEvent(keyCode)
   {
   }
 

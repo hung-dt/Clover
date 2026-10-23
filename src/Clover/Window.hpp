@@ -49,7 +49,7 @@ public:
   virtual unsigned height() const = 0;
 
   // Window attributes
-  virtual void eventCallback(const EventCallbackFn& callback) = 0;
+  virtual void setEventCallback(const EventCallbackFn& callback) = 0;
   virtual void setVSync(bool enable) = 0;
   virtual bool isVSync() const = 0;
 
