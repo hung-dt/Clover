@@ -4,8 +4,6 @@
 
 #include "spdlog/spdlog.h"
 
-#include <memory>
-
 /*--------------------------------------------------------------------------*/
 
 namespace clover {

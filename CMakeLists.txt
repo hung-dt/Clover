@@ -50,8 +50,7 @@ add_subdirectory(extern)
 # Other project's CMakeLists.txt
 #------------------------------------------------------------------------------
 
-add_subdirectory(Clover)
-add_subdirectory(Sandbox)
+add_subdirectory(src)
 
 # examples
 if (BUILD_EXAMPLES)

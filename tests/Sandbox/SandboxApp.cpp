@@ -2,12 +2,12 @@
 
 /*--------------------------------------------------------------------------*/
 
-class Sandbox : public clover::Application
+class SandboxApp : public clover::Application
 {};
 
 /*--------------------------------------------------------------------------*/
 
 clover::Application* clover::createApplication()
 {
-  return new Sandbox();
+  return new SandboxApp();
 }

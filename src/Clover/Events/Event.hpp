@@ -4,11 +4,9 @@
 //  Created    : 2026-10-23
 //  Description: Class definition for Events
 //===========================================================================
+#include "clvpch.hpp"
 
 #include "Core.hpp"
-
-#include <functional>
-#include <string>
 
 /*--------------------------------------------------------------------------*/
 
