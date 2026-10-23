@@ -1,7 +1,17 @@
-add_library(clover SHARED
+set(CLOVER_SOURCES
     Application.cpp
     Log.cpp
 )
+
+if(WIN32)
+    message(STATUS "Windows platform")
+    list(APPEND CLOVER_SOURCES Platform/Win/WindowWin.cpp)
+elseif(CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    message(STATUS "Linux platform")
+    # list(APPEND CLOVER_SOURCES Platform/Linux/WindowLinux.cpp)
+endif()
+
+add_library(clover SHARED ${CLOVER_SOURCES})
 
 target_precompile_headers(clover PRIVATE clvpch.hpp)
 
@@ -16,5 +26,5 @@ target_include_directories(clover
 )
 
 target_link_libraries(clover
-    PRIVATE spdlog::spdlog
+    PUBLIC spdlog::spdlog glfw
 )

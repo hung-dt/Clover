@@ -38,3 +38,7 @@
 - When event occurs inside the actual window:
   - the window class will receive an event callback
   - the window will construct an event and then somehow propagate back to the application
+
+# Window Abstraction and GLFW
+
+- Window class per platform

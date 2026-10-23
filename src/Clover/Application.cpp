@@ -6,14 +6,19 @@ namespace clover {
 
 /*--------------------------------------------------------------------------*/
 
+Application::Application()
+  : window_(Window::create())
+{
+}
+
+/*--------------------------------------------------------------------------*/
+
 void Application::run()
 {
-  WindowResizeEvent e{ 1280, 720 };
-
-  CLV_CORE_LOG_TRACE(e);
-
-  while ( true )
-    ;
+  isRunning_ = true;
+  while ( isRunning_ ) {
+    window_->onUpdate();
+  }
 }
 
 }  // namespace clover
