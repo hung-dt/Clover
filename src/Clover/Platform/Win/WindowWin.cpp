@@ -4,6 +4,8 @@
 //  Description: Class implementation for Window on Windows platform
 //===========================================================================
 
+#include <glad/glad.h>
+
 #include "WindowWin.hpp"
 #include "Events/ApplicationEvent.hpp"
 #include "Events/KeyEvent.hpp"
@@ -64,6 +66,12 @@ void WindowWin::init(const WindowProps& props)
     (int)props.width, (int)props.height, props.title.c_str(), nullptr, nullptr);
 
   glfwMakeContextCurrent(window_);
+
+  // Initialize OpenGL loader to use OpenGL functions
+  if ( !gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)) ) {
+    CLV_CORE_LOG_ERROR("Failed to initialize GLAD!");
+  }
+
   glfwSetWindowUserPointer(window_, &data_);
   setVSync(true);
 

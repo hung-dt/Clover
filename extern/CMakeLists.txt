@@ -16,8 +16,8 @@ CPMAddPackage(
 #------------------------------------------------------------------------------
 # glad v1
 
-add_library(glad STATIC glad/src/glad.c)
-target_include_directories(glad PUBLIC glad/include)
+add_library(glad STATIC glad_gl4.1/src/glad.c)
+target_include_directories(glad PUBLIC glad_gl4.1/include)
 
 #------------------------------------------------------------------------------
 # glm
@@ -39,15 +39,44 @@ CPMAddPackage(
 )
 
 #------------------------------------------------------------------------------
-# SDL3
+# DearIMGUI: recommended not to build as static/shared lib
+# Note: 1.92.7 works with SDL_ScaleMode. Will update to later version if fixed
 
 CPMAddPackage(
-    URI "gh:libsdl-org/SDL#release-3.4.14"
-    OPTIONS
-        "SDL_SHARED ON"
-        "SDL_TESTS OFF"
-        "SDL_DISABLE_INSTALL ON"
+    URI "gh:ocornut/imgui@1.92.7-docking"
+    DOWNLOAD_ONLY TRUE
 )
+
+if(imgui_ADDED)
+    add_library(imgui_GLFW INTERFACE)
+
+    # Specify the required ImGui source files
+    target_sources(imgui_GLFW INTERFACE
+        ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_demo.cpp
+        ${imgui_SOURCE_DIR}/imgui_draw.cpp
+        ${imgui_SOURCE_DIR}/imgui_tables.cpp
+        ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+
+        # GLFW backend with OpenGL
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+    )
+
+    # Include directories for core ImGui and its backends
+    target_include_directories(imgui_GLFW INTERFACE
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
+    )
+
+    # Link ImGui to GLFW
+if (MINGW)
+    target_link_libraries(imgui_GLFW INTERFACE glfw opengl32)
+else()
+    target_link_libraries(imgui_GLFW INTERFACE glfw -lGL)
+endif()
+
+endif()
 
 if (BUILD_TESTS)
 

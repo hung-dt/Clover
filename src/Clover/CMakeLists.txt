@@ -27,5 +27,5 @@ target_include_directories(clover
 )
 
 target_link_libraries(clover
-    PUBLIC spdlog::spdlog glfw
+    PUBLIC spdlog::spdlog imgui_GLFW glad
 )

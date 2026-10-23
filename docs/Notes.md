@@ -49,3 +49,7 @@
   - Game layer
   - In-game UI layer
   - Debug layer (ImGUI)
+
+## Modern OpenGL
+
+- GL Loader with glad
