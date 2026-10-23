@@ -18,6 +18,9 @@ namespace clover {
 Application::Application()
   : window_(Window::create())
 {
+  CLV_ASSERT(!instance_, "Application already exists!");
+  instance_ = this;
+
   window_->setEventCallback(BIND_EVENT_FN(onEvent));
 }
 
@@ -60,6 +63,7 @@ void Application::onEvent(Event& event)
 void Application::pushLayer(Layer* layer)
 {
   layerStack_.push(layer);
+  layer->onAttach();
 }
 
 /*--------------------------------------------------------------------------*/
@@ -67,6 +71,7 @@ void Application::pushLayer(Layer* layer)
 void Application::pushOverlay(Layer* overlay)
 {
   layerStack_.pushOverlay(overlay);
+  overlay->onAttach();
 }
 
 /*--------------------------------------------------------------------------*/

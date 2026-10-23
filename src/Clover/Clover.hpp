@@ -8,6 +8,7 @@
 #include "Application.hpp"
 #include "Layer.hpp"
 #include "Log.hpp"
+#include "ImGUI/ImGUILayer.hpp"
 
 //------------ Entry Point --------------
 

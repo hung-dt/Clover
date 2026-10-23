@@ -10,7 +10,10 @@ public:
   {
   }
 
-  void onUpdate() override { CLV_CLIENT_LOG_INFO("TestLayer::onUpdate"); }
+  void onUpdate() override
+  {
+    // CLV_CLIENT_LOG_INFO("TestLayer::onUpdate");
+  }
 
   void onEvent(clover::Event& e) override { CLV_CLIENT_LOG_TRACE("{}", e); }
 };
@@ -20,7 +23,11 @@ public:
 class SandboxApp : public clover::Application
 {
 public:
-  SandboxApp() { pushLayer(new TestLayer); }
+  SandboxApp()
+  {
+    pushLayer(new TestLayer);
+    pushOverlay(new clover::ImGUILayer);
+  }
 };
 
 /*--------------------------------------------------------------------------*/

@@ -19,6 +19,8 @@ public:
 
   virtual ~Application() = default;
 
+  inline static Application& get() { return *instance_; }
+
   void run();
 
   void onEvent(Event& event);
@@ -27,7 +29,11 @@ public:
 
   void pushOverlay(Layer*);
 
+  Window& window() { return *window_; }
+
 private:
+  inline static Application* instance_{ nullptr };
+
   WindowPtr window_;
 
   bool isRunning_{ false };

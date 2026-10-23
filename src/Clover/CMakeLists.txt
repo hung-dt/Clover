@@ -2,6 +2,7 @@ set(CLOVER_SOURCES
     Application.cpp
     Log.cpp
     LayerStack.cpp
+    ImGUI/ImGUILayer.cpp
 )
 
 if(WIN32)
