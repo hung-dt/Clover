@@ -6,6 +6,7 @@
 
 #include "Core.hpp"
 #include "Application.hpp"
+#include "Layer.hpp"
 #include "Log.hpp"
 
 //------------ Entry Point --------------

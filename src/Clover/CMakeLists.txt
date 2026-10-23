@@ -1,6 +1,7 @@
 set(CLOVER_SOURCES
     Application.cpp
     Log.cpp
+    LayerStack.cpp
 )
 
 if(WIN32)

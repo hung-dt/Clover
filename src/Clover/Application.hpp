@@ -1,11 +1,14 @@
 #pragma once
 
 #include "Core.hpp"
-#include "Events/ApplicationEvent.hpp"
-#include "Events/Event.hpp"
+#include "LayerStack.hpp"
 #include "Window.hpp"
 
 namespace clover {
+
+class Event;
+
+class WindowCloseEvent;
 
 /*--------------------------------------------------------------------------*/
 
@@ -20,10 +23,16 @@ public:
 
   void onEvent(Event& event);
 
+  void pushLayer(Layer*);
+
+  void pushOverlay(Layer*);
+
 private:
   WindowPtr window_;
 
   bool isRunning_{ false };
+
+  LayerStack layerStack_;
 
   bool onWindowClosed(WindowCloseEvent& e);
 };

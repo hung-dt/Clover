@@ -87,6 +87,8 @@ public:
 
   inline bool isInCategory(EventCategory cat) { return categoryFlags() & cat; }
 
+  inline bool isHandled() const { return isHandled_; }
+
 protected:
   bool isHandled_{ false };
 };

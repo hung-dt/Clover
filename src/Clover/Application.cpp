@@ -1,6 +1,9 @@
 #include "Application.hpp"
 #include "Log.hpp"
 #include "Events/ApplicationEvent.hpp"
+#include "Events/Event.hpp"
+
+#include <ranges>
 
 namespace clover {
 
@@ -24,6 +27,10 @@ void Application::run()
 {
   isRunning_ = true;
   while ( isRunning_ ) {
+    for ( auto layer : layerStack_ ) {
+      layer->onUpdate();
+    }
+
     window_->onUpdate();
   }
 }
@@ -37,6 +44,29 @@ void Application::onEvent(Event& event)
     BIND_EVENT_BOOL_FN(onWindowClosed, WindowCloseEvent));
 
   CLV_CORE_LOG_INFO("Handle {}", event);
+
+  // handle events for layers
+  for ( auto layer : std::views::reverse(layerStack_) ) {
+    layer->onEvent(event);
+    // once the event is handled it will not be propagated down
+    if ( event.isHandled() ) {
+      break;
+    }
+  }
+}
+
+/*--------------------------------------------------------------------------*/
+
+void Application::pushLayer(Layer* layer)
+{
+  layerStack_.push(layer);
+}
+
+/*--------------------------------------------------------------------------*/
+
+void Application::pushOverlay(Layer* overlay)
+{
+  layerStack_.pushOverlay(overlay);
 }
 
 /*--------------------------------------------------------------------------*/
