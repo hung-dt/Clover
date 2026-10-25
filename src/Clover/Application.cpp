@@ -10,8 +10,6 @@ namespace clover {
 // #define BIND_EVENT_FN(e) std::bind(&Application::e, this,
 // std::placeholders::_1)
 #define BIND_EVENT_FN(evFn) [this](Event& ev) { this->evFn(ev); }
-#define BIND_EVENT_BOOL_FN(evFn, evType)        \
-  [this](evType& ev) { return this->evFn(ev); }
 
 /*--------------------------------------------------------------------------*/
 

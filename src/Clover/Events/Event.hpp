@@ -30,6 +30,7 @@ enum class EventType
   AppUpdate,
   AppRender,
   KeyPressed,
+  KeyTyped,
   KeyReleased,
   MouseButtonPressed,
   MouseButtonReleased,

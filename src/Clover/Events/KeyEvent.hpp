@@ -16,17 +16,17 @@ namespace clover {
 class CLV_API KeyEvent : public Event
 {
 public:
-  inline int getMouseButton() const { return button_; }
+  inline int getKeyCode() const { return keyCode_; }
 
   EVENT_CLASS_CATEGORY(EventCategoryKeyboard | EventCategoryInput)
 
 protected:
   KeyEvent(int keyCode)
-    : button_(keyCode)
+    : keyCode_(keyCode)
   {
   }
 
-  int button_;
+  int keyCode_;
 };
 
 /*--------------------------------------------------------------------------*/
@@ -45,13 +45,31 @@ public:
   std::string str() const override
   {
     return std::format(
-      "KeyPressedEvent: keycode={}, repeats={}", button_, repeatCount_);
+      "KeyPressedEvent: keycode={}, repeats={}", keyCode_, repeatCount_);
   }
 
   EVENT_CLASS_TYPE(KeyPressed)
 
 private:
   int repeatCount_;
+};
+
+/*--------------------------------------------------------------------------*/
+
+class CLV_API KeyTypedEvent : public KeyEvent
+{
+public:
+  KeyTypedEvent(int keyCode)
+    : KeyEvent(keyCode)
+  {
+  }
+
+  std::string str() const override
+  {
+    return std::format("KeyTypedEvent: keycode={}", keyCode_);
+  }
+
+  EVENT_CLASS_TYPE(KeyTyped)
 };
 
 /*--------------------------------------------------------------------------*/
@@ -66,7 +84,7 @@ public:
 
   std::string str() const override
   {
-    return std::format("KeyReleasedEvent: keycode={}", button_);
+    return std::format("KeyReleasedEvent: keycode={}", keyCode_);
   }
 
   EVENT_CLASS_TYPE(KeyReleased)

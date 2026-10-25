@@ -41,3 +41,6 @@
 #endif
 
 #define BIT(x) (1 << x)
+
+#define BIND_EVENT_BOOL_FN(evFn, evType)        \
+  [this](evType& ev) { return this->evFn(ev); }
