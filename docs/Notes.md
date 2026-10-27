@@ -38,6 +38,7 @@
 - When event occurs inside the actual window:
   - the window class will receive an event callback
   - the window will construct an event and then somehow propagate back to the application
+  - the application will dispatch the event to be handled with appropriate handler.
 
 ## Window Abstraction and GLFW
 
@@ -49,6 +50,8 @@
   - Game layer
   - In-game UI layer
   - Debug layer (ImGUI)
+
+- Events handling???
 
 ## Modern OpenGL
 

@@ -1,14 +1,5 @@
-# Build directories and binary files
-_build/
-_bin/
-_lib/
-_tmp/
-build/
-bin/
-out/
-tmp/
-logs/
-.cache/
+# Prerequisites
+*.d
 
 # Compiled Object files
 *.slo
@@ -30,6 +21,7 @@ logs/
 *.so
 *.dylib
 *.dll
+*.so.*
 
 # Compiled Static libraries
 *.lai
@@ -42,8 +34,43 @@ logs/
 *.out
 *.app
 
+# Build and output directories
+build/
+Build/
+build-*/
+_build/
+_bin/
+_lib/
+_out/
+build/
+bin/
+lib/
+out/
+
+# CMake generated files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+*.swp
+*~
+
+# vcpkg
+vcpkg_installed/
+
 # debug information files
 *.dwo
+
+# test output & cache
+Testing/
+.cache/
 
 # CMake user specific settings
 CMakeUserPresets.json
@@ -52,15 +79,12 @@ CMakeUserPresets.json
 .vs/
 .idea/
 .vscode/*
+!.vscode/templates
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-*.bak
-*.swp
-*~
 _ReSharper*
-*.log
 
 # OS Generated Files
 .DS_Store
@@ -79,3 +103,6 @@ Thumbs.db
 # Others
 *.zip
 imgui.ini
+_tmp/
+tmp/
+logs/

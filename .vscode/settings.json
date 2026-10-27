@@ -15,6 +15,8 @@
     "editor.cursorBlinking": "smooth",
     "editor.bracketPairColorization.enabled": true,
     // "editor.guides.bracketPairs": "active",
+    "editor.fontFamily": "'JetBrainsMono NFM', 'FiraCode NFM', 'MesloLGSDZ Nerd Font Mono', Consolas, 'Courier New', monospace",
+    "editor.renderWhitespace": "none",
     //
     // ==========================================
     // File Management & Auto-Save
@@ -39,9 +41,21 @@
     // ==========================================
     // Window & Workbench UI Tuning
     // ==========================================
-    "window.title": "${activeEditorMedium}${separator}${rootName}",
+    "window.title": "${rootName}${separator}${activeEditorMedium}",
     "editor.linkedEditing": true,
     "editor.wordWrap": "on",
+    "workbench.sideBar.location": "right",
+    //
+    // ==========================================
+    // Terminal
+    // ==========================================
+    "terminal.integrated.profiles.windows": {
+        "Git Bash": {
+            "path": "E:\\Dev\\Tools\\PortableGit\\bin\\bash.exe",
+            "icon": "terminal-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "Git Bash",
     //
     // ==========================================
     // Language Specific Overrides
@@ -64,9 +78,35 @@
     "cmake.modifyLists.addNewSourceFiles": "no",
     "clangd.arguments": [
         "--background-index", // Index project in the background for instant navigation
-        "--query-driver=E:\\Dev\\Tools\\mingw64-gcc-15.3.0-r1\\bin\\g++.exe",
+        "--query-driver=E:/Dev/Tools/mingw64-gcc-15.3.0-r1/bin/g++.exe,E:/Dev/Tools/mingw64-gcc-15.3.0-r1/bin/gcc.exe,/usr/bin/g++,/usr/bin/gcc",
         "--clang-tidy", // Turn on real-time linting checks
         "-j=4", // Allocate compiler threads (adjust to your CPU cores)
         "--header-insertion=never" // do not auto include
     ],
+    // File Temples by rioj7
+    "templates.author": "hung-dt (dth.online@gmail.com)",
+    "templates.dateTimeFormat": {
+        "locale": "en-US",
+        "options": {
+            "year": "numeric",
+            "month": "2-digit",
+            "day": "2-digit",
+            "hour12": false,
+            "hour": "2-digit",
+            "minute": "2-digit",
+            "second": "2-digit",
+            "timeZoneName": "short"
+        },
+        "template": "${year}-${month}-${day} ${hour}:${minute}:${second} ${timeZoneName}",
+        "year-only": {
+            "template": "${year}"
+        },
+        "timeHMS": {
+            "template": "${hour}:${minute}:${second}"
+        },
+    },
+    "templates.saveAfterInputVariableOnFileCreation": true,
+    // Doxygen Documentation Generator - Christoph Schlosser
+    "doxdocgen.generic.paramTemplate": "@param '{param}'",
+    "doxdocgen.generic.returnTemplate": "@return '{type}' "
 }
